@@ -275,12 +275,12 @@ class Subtitle(Track):
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL
             )
-            elif self.codec in Subtitle.Codec.fTTML:
-                output_path = self.path.with_suffix(".srt")
-                converter = ISMTConverter()
-                srt = converter.from_file(self.path)
-                srt.save(output_path)
-                codec = Subtitle.Codec.SubRip
+        elif self.codec in Subtitle.Codec.fTTML:
+            output_path = self.path.with_suffix(".srt")
+            converter = ISMTConverter()
+            srt = converter.from_file(self.path)
+            srt.save(output_path)
+            codec = Subtitle.Codec.SubRip
         else:
             writer = {
                 # pycaption generally only supports these subtitle formats
